@@ -1,5 +1,6 @@
 import { useState } from "react"
 import data from "./data"
+import { nanoid } from "nanoid"
 
 const App = () => {
   const [count, setCount] = useState(1)
@@ -10,6 +11,8 @@ const App = () => {
     let amount = parseInt(count)
     setText(data.slice(0, amount))
   }
+
+  // const id = nanoid()
 
   return (
     <section className="section-center">
@@ -31,8 +34,10 @@ const App = () => {
         </button>
       </form>
       <article className="lorem-text">
-        {text.map((item, index) => {
-          return <p key={index}>{item}</p>
+        {text.map((item) => {
+          const id = nanoid()
+          console.log(id)
+          return <p key={id}>{item}</p>
         })}
       </article>
     </section>
